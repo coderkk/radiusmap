@@ -1,12 +1,27 @@
+<script>
+import Header from '@/components/Header.vue';
+import Footer from '@/components/Footer.vue';
+export default {
+  components: {
+    Header,
+    Footer,
+  },
+  setup() {
+
+  },
+}
+</script>
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
+  <Header />
   <router-view/>
+  <Footer />
 </template>
 
 <style lang="scss">
+html, body, #app {
+  height: 100%;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
