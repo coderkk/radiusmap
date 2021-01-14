@@ -38,8 +38,22 @@ export default {
     const iconSize = ref([25, 40]);
     const currentMarkerIcon = ref(null);
 
+    const getDefaultPosition = () => {
+      let defaultPosition = null;
+      let lastPinLocation = localStorage.getItem("pinMarker");
+      if ( lastPinLocation !== undefined ) {
+        try {
+          lastPinLocation = JSON.parse(lastPinLocation);
+          defaultPosition = leaflet.latLng(lastPinLocation.latitude, lastPinLocation.longitude);
+        } catch (e) {}
+      }
+
+      if (defaultPosition === null) defaultPosition = leaflet.latLng(5.960631696373147, 116.07158660888673);
+      return defaultPosition;
+    };
+
     let watchPositionId = null;
-    let defaultLatLng = leaflet.latLng(5.960631696373147, 116.07158660888673);
+    let defaultLatLng = getDefaultPosition();
     
     const currentMarker = ref(defaultLatLng);
     const pinMarker = ref(defaultLatLng);
@@ -73,8 +87,6 @@ export default {
     };
 
     const setMapToPlacePosition = () => {
-      mapCenter.value = leaflet.latLng(0, 0);;
-
       let latlng = pinMarker.value;
       mapCenter.value = leaflet.latLng(latlng.lat, latlng.lng);
     };
