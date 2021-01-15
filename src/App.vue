@@ -23,7 +23,9 @@ export default {
 html, body, #app {
   height: 100%;
 }
-
+.flex-col {
+  flex-direction: column;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
