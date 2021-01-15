@@ -42,7 +42,8 @@ export default {
             </div>
             <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div class="flex-shrink-0 flex items-center">
-                    <h1 class="text-white">Radius Map</h1>
+                    <img class="mr-2 h-8 w-8" src="@/assets/logo.png" alt="">
+                    <span class="text-white">Radius Map</span>
                 </div>
                 <div class="hidden sm:block sm:ml-6">
                     <div class="flex space-x-4">
