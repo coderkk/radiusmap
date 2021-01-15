@@ -4,7 +4,7 @@
     <p class="mt-5 text-left text-2xl">
       Since 13 Jan 2021, Malaysia government implement MCO, CMCO and RMCO to fight against COVID-19. Those implemented MCO States have set (10) ten-kilometre travel limit from house. This map will show you 10km lockdown limit. You can move around the pin to locate your house position, so that you can monitor or plan what place you can travel.
     </p>
-    <p>
+    <p class="mt-5 text-center text-2xl">
       Stay safe!
     </P>
   </div>
