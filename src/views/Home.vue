@@ -152,7 +152,7 @@ export default {
     });
 
     watch(followMyLocation, (follow) => {
-      if (follow) {
+      if (follow && detectDistance.value) {
         setMapToPlacePosition(currentMarker.value);
       }
       localStorage.setItem("followMyLocation", follow);
