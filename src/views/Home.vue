@@ -224,7 +224,7 @@ export default {
 </script>
 
 <template>
-  <div id="mapLayer">
+  <div id="mapLayer" class="h-full">
     <l-map
       ref="mapContainer"
       id="mapContainer"
@@ -245,11 +245,11 @@ export default {
       <l-marker :lat-lng="currentMarker" :visible="detectDistance" :zIndexOffset="100" :icon="currentMarkerIcon" />
 
       <l-control class="leaflet-control leaflet-options-control">
-        <button @click="setCurrentPlacePosition" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Set to Current Location</button>
+        <button @click="setCurrentPlacePosition" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-xs sm:text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Set to Current Location</button>
 
         <label class="block mt-2">
-          <span class="block text-sm font-medium text-gray-700">Radius</span>
-          <select class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" v-model="markerRadius">
+          <span class="block sm:text-xs sm:text-sm font-medium text-gray-700">Radius</span>
+          <select class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-xs sm:text-sm" v-model="markerRadius">
             <option value="10">10 KM</option>
             <option value="20">20 KM</option>
             <option value="30">30 KM</option>
@@ -259,16 +259,16 @@ export default {
         <div class="flex mt-2">
           <label class="flex items-center">
             <input type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" v-model="detectDistance">
-            <span  class="font-medium text-gray-700 ml-3">Detect Distance</span>
+            <span  class="text-xs sm:text-sm font-medium text-gray-700 ml-3">Detect Distance</span>
           </label>
         </div>
         <label class="block mt-2" v-if="detectDistance">
-          <span class="font-medium text-gray-700">Distance : <strong>{{distanceDisplay}} KM</strong></span>
+          <span class="text-xs sm:text-sm font-medium text-gray-700">Distance : <strong>{{distanceDisplay}} KM</strong></span>
         </label>
         <div class="flex mt-2" v-if="detectDistance">
           <label class="flex items-center">
             <input type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" v-model="followMyLocation">
-            <span  class="font-medium text-gray-700 ml-3">Follow My Location</span>
+            <span  class="text-xs sm:text-sm font-medium text-gray-700 ml-3">Follow My Location</span>
           </label>
         </div>
       </l-control>
@@ -280,7 +280,6 @@ export default {
 
 <style scored>
   #mapLayer {
-    height: calc(100% - 70px);
     width: 100%;
     
   }

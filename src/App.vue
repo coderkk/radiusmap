@@ -13,7 +13,9 @@ export default {
 </script>
 <template>
   <Header />
+  <main class="flex-grow">
   <router-view/>
+  </main>
   <Footer />
 </template>
 
