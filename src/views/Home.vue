@@ -281,7 +281,6 @@ export default {
 <style scored>
   #mapLayer {
     width: 100%;
-    
   }
   .leaflet-options-control {
     background: white;

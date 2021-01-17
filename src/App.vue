@@ -13,8 +13,8 @@ export default {
 </script>
 <template>
   <Header />
-  <main class="flex-grow">
-  <router-view/>
+  <main>
+    <router-view/>
   </main>
   <Footer />
 </template>
@@ -32,6 +32,10 @@ html, body, #app {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+main {
+  height: calc(100% - 100px);
 }
 
 #nav {

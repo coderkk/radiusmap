@@ -36,16 +36,19 @@ export const toRadian = (degree) => {
 
 export const getLocation = async () => {
     return new Promise((resolve, reject) => {
-
-        if(!("geolocation" in navigator)) {
-            reject(new Error('Geolocation is not available.'));
+        if (navigator && navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                resolve,
+                (geolocationPositionError) => { // reject
+                    // Note: must explicitly cast the `GeolocationPositionError` as an Error instance since bluebird explicitly expects a javascript Error object
+                    // see http://bluebirdjs.com/docs/warning-explanations.html#warning-a-promise-was-rejected-with-a-non-error
+                    // and `GeolocationPositionError` is not an Error instance, see https://developer.mozilla.org/en-US/docs/Web/API/GeolocationPositionError
+                    return reject(new Error(geolocationPositionError));
+                }
+            );
+        } else {
+            // Browser does not support geolocation at all
+            reject(new Error('Geolocation is unsupported'));
         }
-
-        navigator.geolocation.getCurrentPosition(pos => {
-            resolve(pos);
-        }, err => {
-            reject(err);
-        });
-
     });
 }
