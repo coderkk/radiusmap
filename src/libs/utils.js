@@ -38,7 +38,9 @@ export const getLocation = async () => {
     return new Promise((resolve, reject) => {
         if (navigator && navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
-                resolve,
+                (pos) => {
+                    resolve(pos)
+                },
                 (geolocationPositionError) => { // reject
                     // Note: must explicitly cast the `GeolocationPositionError` as an Error instance since bluebird explicitly expects a javascript Error object
                     // see http://bluebirdjs.com/docs/warning-explanations.html#warning-a-promise-was-rejected-with-a-non-error
