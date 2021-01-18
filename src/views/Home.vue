@@ -1,5 +1,5 @@
 <script>
-import { ref, reactive, computed, watch, onMounted } from 'vue';
+import { ref, reactive, computed, watch, onMounted, onUnmounted } from 'vue';
 import leaflet from 'leaflet'
 import "leaflet/dist/leaflet.css";
 
@@ -77,6 +77,7 @@ export default {
 
     const setCurrentPlacePosition = () => {
       getLocation().then((pos) => {
+        console.log(pos);
         setPlacePosition(pos.coords.latitude, pos.coords.longitude);
         setMapToPlacePosition(pinMarker.value);
         distance.value = marker_distance();
@@ -97,7 +98,7 @@ export default {
           setMapToPlacePosition(currentMarker.value);
         }
       }, (error) => {
-        console.log('detectRadiusDistance', error);
+        console.log('[detectRadiusDistance][error]', error);
       },
       {
         enableHighAccuracy: true,
@@ -197,6 +198,11 @@ export default {
           followMyLocation.value = lastFollowMyLocation
         } catch (e) {}
       }
+    });
+
+    onUnmounted(() => {
+      // Clear timer when exit
+      removeDetectRadiusDistance();
     });
     // End Lifecycle
 
